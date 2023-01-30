@@ -1,7 +1,9 @@
 <template>
   <div>
     <Nav></Nav>
-    <router-view></router-view>
+    <keep-alive>    <!-- 缓存组件 -->
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 

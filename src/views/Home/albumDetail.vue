@@ -28,15 +28,29 @@ export default {
   props: ['id'],
   data () {
     return {
-      musics: []
+      musics: [],
+      oldId: '-1'
     }
   },
-  mounted () {
+  mounted () {    //初次请求
+    this.oldId = this.id;
     this.$api.getMusicDetails({
       id: this.id
     }).then(res => {
       this.musics = res.playlist.tracks;
     })
+  },
+  activated () {   //请求缓存:data能被缓存,props不能∴this.id总是最新的
+    if (this.oldId !== this.id) {
+      console.log('更新！');
+      this.oldId = this.id;
+      this.$api.getMusicDetails({
+        id: this.oldId
+      }).then(res => {
+        this.musics = res.playlist.tracks;
+      })
+    }
+
   },
   methods: {
     cutString (str) {
@@ -48,11 +62,11 @@ export default {
       }
       return '';
     },
-    goback(){
+    goback () {
       this.$router.go(-1);
     },
-    setUrl(url){
-      if(url){
+    setUrl (url) {
+      if (url) {
         return encodeURIComponent(url);
       }
     }

@@ -27,7 +27,7 @@ const errorHandle = (status,info) =>{
     }
 }
 
-// 创建axios的实例对象
+// 创建axios的实例对象--限定超时
 const instance = axios.create({
     timeout:5000
 })

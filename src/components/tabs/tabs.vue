@@ -19,6 +19,7 @@ export default {
     }
   },
   mounted(){
+    //如果用户设置了默认显示块,就调整为用户的
     if(this.defaultActiveKey){
       this.activeKey = this.defaultActiveKey;
     }

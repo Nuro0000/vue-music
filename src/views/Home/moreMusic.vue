@@ -48,7 +48,6 @@ export default {
       const scrollTop = document.documentElement.scrollTop;
       //视口高度
       const clientHeiht = document.documentElement.clientHeight;
-
       //总高度
       const scrollHeight = document.documentElement.scrollHeight;
 
